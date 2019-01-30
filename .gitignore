@@ -1,0 +1,16 @@
+# JetBrains project files
+.idea
+
+# NPM
+node_modules
+
+# Node
+dist
+.env
+
+# Optional npm cache directory
+.npm
+
+# Logs
+logs
+*.log
