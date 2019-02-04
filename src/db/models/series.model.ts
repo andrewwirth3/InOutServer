@@ -1,6 +1,8 @@
 import {
+  AllowNull,
   BelongsTo,
   Column,
+  DataType,
   Default,
   ForeignKey,
   HasMany,
@@ -31,9 +33,48 @@ export default class Series extends Model<Series> {
 
   @Column
   @Default(false)
-  public hasSchedule: boolean;
+  @AllowNull(false)
+  public IsRecurring: boolean;
 
   @Column
   @Default(true)
+  @AllowNull(false)
   public isActive: boolean;
+
+  @Column
+  public repeatCount: number;
+
+  @Column(DataType.ENUM('DAY', 'WEEK', 'MONTH', 'QUARTER', 'YEAR'))
+  public repeatType: 'DAY' | 'WEEK' | 'MONTH' | 'QUARTER' | 'YEAR';
+
+  @Column
+  public endDate: Date;
+
+  @Column
+  public endCount: number;
+
+  @Column
+  public repeatSunday: boolean;
+
+  @Column
+  public repeatMonday: boolean;
+
+  @Column
+  public repeatTuesday: boolean;
+
+  @Column
+  public repeatWednesday: boolean;
+
+  @Column
+  public repeatThursday: boolean;
+
+  @Column
+  public repeatFriday: boolean;
+
+  @Column
+  public repeatSaturday: boolean;
+
+  @Column
+  // first, last, # ('8' would equal 8th day of the month)
+  public repeatMonthly: string;
 }

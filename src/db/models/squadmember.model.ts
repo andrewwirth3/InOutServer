@@ -1,5 +1,6 @@
 import * as bcrypt from 'bcrypt-nodejs';
 import {
+  AllowNull,
   AutoIncrement,
   BelongsTo,
   Column,
@@ -38,5 +39,11 @@ export default class SquadMember extends Model<SquadMember> {
 
   @Column
   @Default(true)
+  @AllowNull(false)
   public isActive: boolean;
+
+  @Column
+  @AllowNull(false)
+  @Default(1)
+  public sequence: number;
 }

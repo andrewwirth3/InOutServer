@@ -1,5 +1,6 @@
 import * as bcrypt from 'bcrypt-nodejs';
 import {
+  AllowNull,
   Column,
   CreatedAt,
   DataType,
@@ -32,6 +33,7 @@ export default class User extends Model<User> {
   // Fields
   @Column
   @PrimaryKey
+  @AllowNull(false)
   public username: string;
 
   @Column({
@@ -47,6 +49,7 @@ export default class User extends Model<User> {
 
   @Column
   @Length({ max: 50 })
+  @AllowNull(false)
   public name: string;
 
   @Column({
@@ -64,5 +67,6 @@ export default class User extends Model<User> {
 
   @Column
   @Default(true)
+  @AllowNull(false)
   public isActive: boolean;
 }

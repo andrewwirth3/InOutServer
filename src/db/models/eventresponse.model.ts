@@ -38,6 +38,5 @@ export default class EventResponse extends Model<EventResponse> {
   // Fields
 
   @Column
-  @Default(true)
-  public isActive: boolean;
+  public value: boolean;
 }

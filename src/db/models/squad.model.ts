@@ -1,8 +1,10 @@
 import {
+  AllowNull,
   Column,
   Default,
   HasMany,
   HasOne,
+  Length,
   Model,
   Table
 } from 'sequelize-typescript';
@@ -15,7 +17,6 @@ import SquadMember from './squadmember.model';
 })
 export default class Squad extends Model<Squad> {
   // Relations
-
   @HasMany(() => SquadMember)
   public events: SquadMember[];
 
@@ -25,5 +26,11 @@ export default class Squad extends Model<Squad> {
   // Fields
   @Column
   @Default(true)
+  @AllowNull(false)
   public isActive: boolean;
+
+  @Column
+  @AllowNull(false)
+  @Length({ max: 50 })
+  public name: string;
 }
