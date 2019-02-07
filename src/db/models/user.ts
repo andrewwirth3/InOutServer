@@ -14,8 +14,8 @@ import {
   Table,
   UpdatedAt
 } from 'sequelize-typescript';
-import EventResponse from './eventresponse.model';
-import SquadMember from './squadmember.model';
+import EventResponse from './eventresponse';
+import SquadMember from './squadmember';
 
 @Table({
   timestamps: true,
@@ -31,9 +31,9 @@ export default class User extends Model<User> {
   public memberships: SquadMember[];
 
   // Fields
-  @Column
   @PrimaryKey
   @AllowNull(false)
+  @Column
   public username: string;
 
   @Column({
@@ -47,9 +47,9 @@ export default class User extends Model<User> {
   @Column
   public passwordHash: string;
 
-  @Column
   @Length({ max: 50 })
   @AllowNull(false)
+  @Column
   public name: string;
 
   @Column({
@@ -57,16 +57,16 @@ export default class User extends Model<User> {
   })
   public userId: string;
 
-  @Column
   @Length({ max: 256 })
+  @Column
   public email: string;
 
-  @Column
   @Length({ max: 15 })
+  @Column
   public phone: string;
 
-  @Column
   @Default(true)
   @AllowNull(false)
+  @Column
   public isActive: boolean;
 }

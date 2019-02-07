@@ -8,8 +8,8 @@ import {
   Model,
   Table
 } from 'sequelize-typescript';
-import Series from './series.model';
-import SquadMember from './squadmember.model';
+import Series from './series';
+import SquadMember from './squadmember';
 
 @Table({
   timestamps: true,
@@ -24,13 +24,13 @@ export default class Squad extends Model<Squad> {
   public series: Series[];
 
   // Fields
-  @Column
   @Default(true)
   @AllowNull(false)
+  @Column
   public isActive: boolean;
 
-  @Column
   @AllowNull(false)
   @Length({ max: 50 })
+  @Column
   public name: string;
 }

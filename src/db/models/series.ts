@@ -10,8 +10,8 @@ import {
   Model,
   Table
 } from 'sequelize-typescript';
-import Event from './event.model';
-import Squad from './squad.model';
+import Event from './event';
+import Squad from './squad';
 
 @Table({
   timestamps: true,
@@ -31,14 +31,14 @@ export default class Series extends Model<Series> {
 
   // Fields
 
-  @Column
   @Default(false)
   @AllowNull(false)
-  public IsRecurring: boolean;
-
   @Column
+  public isRecurring: boolean;
+
   @Default(true)
   @AllowNull(false)
+  @Column
   public isActive: boolean;
 
   @Column

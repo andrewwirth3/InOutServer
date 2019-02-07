@@ -12,8 +12,8 @@ import {
   PrimaryKey,
   Table
 } from 'sequelize-typescript';
-import Event from './event.model';
-import User from './user.model';
+import Event from './event';
+import User from './user';
 
 @Table({
   timestamps: true,
@@ -30,7 +30,7 @@ export default class EventResponse extends Model<EventResponse> {
 
   @ForeignKey(() => User)
   @Column
-  public userId: number;
+  public username: string;
 
   @BelongsTo(() => User)
   public user: User;

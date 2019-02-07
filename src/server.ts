@@ -1,18 +1,28 @@
 import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import * as express from 'express';
+import Db from './db';
 import Router from './routes';
 
 class Server {
   public app: express.Application;
   public router: Router;
+  public db: Db;
 
   constructor() {
-    this.app = express(); // run the express instance and store in app
-    this.router = new Router(this.app); // add routes
+    // initialize DB
+    this.db = new Db();
 
-    this.router.mapRoutes();
+    // create server
+    this.app = express();
+
+    // map routes
+    this.router = new Router(this.app);
+
+    // read config
     this.config();
+
+    // listen on port
     this.listen();
   }
 

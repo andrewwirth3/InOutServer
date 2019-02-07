@@ -12,8 +12,8 @@ import {
   PrimaryKey,
   Table
 } from 'sequelize-typescript';
-import Squad from './squad.model';
-import User from './user.model';
+import Squad from './squad';
+import User from './user';
 
 @Table({
   timestamps: true,
@@ -30,20 +30,19 @@ export default class SquadMember extends Model<SquadMember> {
 
   @ForeignKey(() => User)
   @Column
-  public userId: number;
+  public username: string;
 
   @BelongsTo(() => User)
   public user: User;
 
   // Fields
-
-  @Column
   @Default(true)
   @AllowNull(false)
+  @Column
   public isActive: boolean;
 
-  @Column
   @AllowNull(false)
   @Default(1)
+  @Column
   public sequence: number;
 }

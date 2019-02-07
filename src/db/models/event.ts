@@ -13,8 +13,8 @@ import {
   PrimaryKey,
   Table
 } from 'sequelize-typescript';
-import EventResponse from './eventresponse.model';
-import Series from './series.model';
+import EventResponse from './eventresponse';
+import Series from './series';
 
 @Table({
   timestamps: true,
@@ -34,16 +34,16 @@ export default class Event extends Model<Event> {
 
   // Fields
 
-  @Column
   @Default(true)
+  @Column
   public isActive: boolean;
 
-  @Column
   @Length({ max: 100 })
+  @Column
   public description: string;
 
-  @Column
   @Length({ max: 100 })
+  @Column
   public location: string;
 
   @Column
@@ -52,13 +52,13 @@ export default class Event extends Model<Event> {
   @Column
   public end: Date;
 
-  @Column
   @AllowNull(false)
   @Default(0)
+  @Column
   public min: number;
 
-  @Column
   @AllowNull(false)
   @Default(5)
+  @Column
   public max: number;
 }

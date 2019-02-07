@@ -1,5 +1,5 @@
 import { Application, NextFunction, Request, Response } from 'express';
-import Users from './users';
+import users from './users';
 
 interface IError {
   status?: number;
@@ -8,16 +8,15 @@ interface IError {
 
 export default class Router {
   private app: Application;
-  private users: Users;
 
   constructor(app: Application) {
     this.app = app;
     this.app.use(this.handleError);
-    this.users = new Users(this.app);
+    this.initRoutes();
   }
 
-  public mapRoutes(): void {
-    this.users.routes();
+  private initRoutes() {
+    this.app.use('/api/v1/users', users);
   }
 
   private handleError(
