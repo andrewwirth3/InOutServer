@@ -31,7 +31,7 @@
 		"express-promise-router": "^3.0.3",
 		"pg": "^7.8.0",
 		"reflect-metadata": "^0.1.13",
-		"sequelize": "^4.42.0",
-		"sequelize-typescript": "^0.6.7"
+		"sequelize": "^5.2.11",
+		"sequelize-typescript": "^1.0.0-alpha.9"
 	}
 }
