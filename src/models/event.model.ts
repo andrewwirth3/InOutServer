@@ -13,8 +13,8 @@ import {
   PrimaryKey,
   Table
 } from 'sequelize-typescript';
-import EventResponse from './eventresponse';
-import Series from './series';
+import EventResponse from './eventresponse.model';
+import Series from './series.model';
 
 @Table({
   timestamps: true,

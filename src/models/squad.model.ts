@@ -8,8 +8,8 @@ import {
   Model,
   Table
 } from 'sequelize-typescript';
-import Series from './series';
-import SquadMember from './squadmember';
+import Series from './series.model';
+import SquadMember from './squadmember.model';
 
 @Table({
   timestamps: true,

@@ -12,8 +12,8 @@ import {
   PrimaryKey,
   Table
 } from 'sequelize-typescript';
-import Event from './event';
-import User from './user';
+import Event from './event.model';
+import User from './user.model';
 
 @Table({
   timestamps: true,

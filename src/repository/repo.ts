@@ -11,24 +11,24 @@ export class Repo<T> implements IBaseRepo<T> {
         const result: M = this.model.create(item);
         return result;
     }
-    public async update<M extends Model<any, any>>(
+    public async update<M extends Model>(
         item: M,
         options?: UpdateOptions
     ): Promise<M> {
         const result: M = this.model.update(item, options);
         return result;
     }
-    public async delete<M extends Model<any, any>>(item: M): Promise<M> {
+    public async delete<M extends Model>(item: M): Promise<M> {
         // set status to D
         return this.update(item);
     }
-    public async find<M extends Model<any, any>>(
+    public async find<M extends Model>(
         options: FindOptions
     ): Promise<M[]> {
         const result: M[] = this.model.findAll(options);
         return result;
     }
-    public async findOne<M extends Model<any, any>>(
+    public async findOne<M extends Model>(
         id: number,
         options?: FindOptions
     ): Promise<M> {

@@ -14,8 +14,8 @@ import {
   Table,
   UpdatedAt
 } from 'sequelize-typescript';
-import EventResponse from './eventresponse';
-import SquadMember from './squadmember';
+import EventResponse from './eventresponse.model';
+import SquadMember from './squadmember.model';
 
 @Table({
   timestamps: true,

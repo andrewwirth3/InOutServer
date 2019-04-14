@@ -1,6 +1,6 @@
 import { Application, NextFunction, Request, Response } from 'express';
 import { Sequelize } from 'sequelize-typescript';
-import users from './users';
+import Routes from './routes';
 
 interface IError {
     status?: number;
@@ -19,7 +19,9 @@ export default class Router {
     }
 
     private initRoutes() {
-        this.app.use('/api/v1/users', users);
+        Routes.forEach((route) => {
+            route.mapRoutes(this.app);
+        });
     }
 
     private handleError(
