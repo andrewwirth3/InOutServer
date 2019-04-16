@@ -23,16 +23,22 @@ export class Repo<T> implements IBaseRepo<T> {
         return this.update(item);
     }
     public async find<M extends Model>(
-        options: FindOptions
+        options: FindOptions,
+        scope?: string
     ): Promise<M[]> {
-        const result: M[] = this.model.findAll(options);
-        return result;
+        if (scope !== null) {
+            return this.model.scope(scope).findAll(options);
+        }
+        return this.model.findAll(options);
     }
     public async findOne<M extends Model>(
         id: number,
+        scope?: string,
         options?: FindOptions
     ): Promise<M> {
-        const result: M = this.model.findByPk(id, options);
-        return result;
+        if (scope !== null) {
+            return this.model.scope(scope).findByPk(id, options);
+        }
+        return this.model.findByPk(id, options);
     }
 }

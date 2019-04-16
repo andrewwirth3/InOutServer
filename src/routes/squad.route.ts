@@ -32,8 +32,13 @@ export class SquadRoute extends RequestExtractor implements IBaseRoute {
     public async GetById(req: Request, res: Response, next: NextFunction) {
         try {
             const options: FindOptions = this.buildFindOptions(req);
+            const scope: string = this.getScope(req);
             console.debug(options);
-            const squad = await this.squadRepo.findOne(req.params.id, options);
+            const squad = await this.squadRepo.findOne(
+                req.params.id,
+                scope,
+                options
+            );
             res.json(squad);
         } catch (e) {
             next(e);
@@ -53,6 +58,7 @@ export class SquadRoute extends RequestExtractor implements IBaseRoute {
                 return;
             }
             const options: FindOptions = this.buildFindOptions(req);
+            const scope: string = this.getScope(req);
             options.where = {
                 id: {
                     [Op.in]: responses.map((e) => e.squadId)
@@ -63,7 +69,7 @@ export class SquadRoute extends RequestExtractor implements IBaseRoute {
                     model: SquadMember
                 }
             ];
-            const squads: Squad[] = await this.squadRepo.find(options);
+            const squads: Squad[] = await this.squadRepo.find(options, scope);
             res.json(squads);
         } catch (e) {
             next(e);

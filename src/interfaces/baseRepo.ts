@@ -4,6 +4,10 @@ export interface IBaseRepo<T> {
     add<M extends Model>(item: M): Promise<M>;
     update<M extends Model>(item: M, options?: UpdateOptions): Promise<M>;
     delete<M extends Model>(item: M): Promise<M>;
-    find<M extends Model>(options: FindOptions): Promise<M[]>;
-    findOne<M extends Model>(id: number, options?: FindOptions): Promise<M>;
+    find<M extends Model>(options: FindOptions, scope?: string): Promise<M[]>;
+    findOne<M extends Model>(
+        id: number,
+        scope?: string,
+        options?: FindOptions
+    ): Promise<M>;
 }

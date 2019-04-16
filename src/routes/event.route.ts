@@ -39,8 +39,13 @@ export class EventRoute extends RequestExtractor implements IBaseRoute {
     public async GetById(req: Request, res: Response, next: NextFunction) {
         try {
             const options: FindOptions = this.buildFindOptions(req);
+            const scope: string = this.getScope(req);
             console.debug(options);
-            const event = await this.eventRepo.findOne(req.params.id, options);
+            const event = await this.eventRepo.findOne(
+                req.params.id,
+                scope,
+                options
+            );
             res.json(event);
         } catch (e) {
             next(e);
@@ -59,6 +64,7 @@ export class EventRoute extends RequestExtractor implements IBaseRoute {
                 return;
             }
             const options: FindOptions = this.buildFindOptions(req);
+            const scope: string = this.getScope(req);
             options.where = {
                 id: {
                     [Op.in]: responses.map((e) => e.eventId)
@@ -69,7 +75,7 @@ export class EventRoute extends RequestExtractor implements IBaseRoute {
                     model: EventResponse
                 }
             ];
-            const events: Event[] = await this.eventRepo.find(options);
+            const events: Event[] = await this.eventRepo.find(options, scope);
             res.json(events);
         } catch (e) {
             next(e);
